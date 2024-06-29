@@ -1,29 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: budget-app
+  name: rails
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
-      app: budget-app
+      app: rails
   template:
     metadata:
       labels:
-        app: budget-app
+        app: rails
     spec:
       containers:
-      - name: budget-app
+      - name: rails
         image: sajjany/budget-app:latest
         ports:
         - containerPort: 3000
         env:
         - name: DATABASE_HOST
           value: postgres
-        - name: DATABASE_NAME
-          value: budget_app_production
         - name: DATABASE_USER
           value: postgres
         - name: DATABASE_PASSWORD
-          value: password
+          value: postgres
 
